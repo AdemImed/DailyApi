@@ -25,7 +25,13 @@ Route::controller(\App\Http\Controllers\Api\V1\Room\RoomController::class)->grou
 });
 
 Route::controller(\App\Http\Controllers\Api\V1\MeetingToken\MeetingTokenController::class)->group(function (){
-    Route::post('meeting-tokens','createToken');
+    Route::post('meeting-tokens','createTokenFromApi');
+    Route::post('self-signed-token','generateSelfSignedToken');
+    Route::get('meeting-tokens/{meeting_token}','validateTokenFromApi');
+});
+
+Route::controller(\App\Http\Controllers\Api\V1\Domain\DomainController::class)->group(function (){
+    Route::get('domains','index');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

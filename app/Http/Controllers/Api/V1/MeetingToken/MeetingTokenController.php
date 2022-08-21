@@ -3,26 +3,46 @@
 namespace App\Http\Controllers\Api\V1\MeetingToken;
 
 use App\Http\Controllers\Controller;
-use App\Services\DailyService;
+use App\Http\Requests\MeetingTokenRequest;
+use App\Services\DailyService\TokenService;
+use Illuminate\Http\JsonResponse;
 
 class MeetingTokenController extends Controller
 {
     /**
-     * @var DailyService
+     * @var TokenService
      */
-    private DailyService $daily;
+    private TokenService $daily;
 
     public function __construct()
     {
-        $this->daily = new DailyService();
+        $this->daily = new TokenService();
     }
 
-//    /**
-//     * @param DailyRequest $request
-//     * @return array|JsonResponse|mixed
-//     */
-//    public function createToken(DailyRequest $request): mixed
-//    {
-//        return $this->daily->createToken($request->validated());
-//    }
+    /**
+     * @param MeetingTokenRequest $request
+     * @return array|JsonResponse|mixed
+     */
+    public function createTokenFromApi(MeetingTokenRequest $request): mixed
+    {
+        return $this->daily->createTokenFromApi($request->validated());
+    }
+
+    /**
+     * @param $meeting_token
+     * @return array|JsonResponse|mixed
+     */
+    public function validateTokenFromApi($meeting_token): mixed
+    {
+        return $this->daily->validateTokenFromApi($meeting_token);
+    }
+
+    /**
+     * @param MeetingTokenRequest $request
+     * @return array|JsonResponse|mixed
+     */
+    public function generateSelfSignedToken(MeetingTokenRequest $request): mixed
+    {
+        return $this->daily->generateSelfSignedToken($request->validated());
+    }
 }

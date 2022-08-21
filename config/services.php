@@ -35,5 +35,6 @@ return [
         'key' => env('DAILY_API_KEY'),
         'key_type' => env('DAILY_KEY_TYPE'),
         'api_base_url' => env('DAILY_API_URL'),
+        'domain_id' => env('DAILY_API_DOMAIN_ID'),
     ],
 ];

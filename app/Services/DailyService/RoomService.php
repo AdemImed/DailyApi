@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\DailyService;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 
-class DailyService
+class RoomService
 {
     /**
      * @var string
@@ -108,22 +108,6 @@ class DailyService
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ])->delete(config('services.daily.api_base_url').'/rooms/'.$room_name);
-
-        if ($result->status() === 200)
-        {
-            return $result->json();
-        }
-
-        return response()->json($result->json(),$result->status());
-    }
-
-    public function createToken(array $data)
-    {
-        $result = Http::withHeaders([
-            'Authorization' => $this->authorization,
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json'
-        ])->post(config('services.daily.api_base_url').'meeting-tokens',$data);
 
         if ($result->status() === 200)
         {

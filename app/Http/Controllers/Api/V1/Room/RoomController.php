@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Api\V1\Room;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomRequest;
-use App\Services\DailyService;
+use App\Services\DailyService\RoomService;
 use Illuminate\Http\JsonResponse;
 
 class RoomController extends Controller
 {
     /**
-     * @var DailyService
+     * @var RoomService
      */
-    protected DailyService $daily;
+    protected RoomService $daily;
 
     public function __construct()
     {
-        $this->daily = new DailyService();
+        $this->daily = new RoomService();
     }
 
     /**
