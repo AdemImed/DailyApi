@@ -39,9 +39,9 @@ class MeetingTokenController extends Controller
 
     /**
      * @param MeetingTokenRequest $request
-     * @return array|JsonResponse|mixed
+     * @return JsonResponse
      */
-    public function generateSelfSignedToken(MeetingTokenRequest $request): mixed
+    public function generateSelfSignedToken(MeetingTokenRequest $request): JsonResponse
     {
         return $this->daily->generateSelfSignedToken($request->validated());
     }

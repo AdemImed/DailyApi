@@ -26,7 +26,7 @@ Route::controller(\App\Http\Controllers\Api\V1\Room\RoomController::class)->grou
 
 Route::controller(\App\Http\Controllers\Api\V1\MeetingToken\MeetingTokenController::class)->group(function (){
     Route::post('meeting-tokens','createTokenFromApi');
-    Route::post('self-signed-token','generateSelfSignedToken');
+    Route::post('self-signed-token','generateSelfSignedToken')->name('generateSelfSignedToken');
     Route::get('meeting-tokens/{meeting_token}','validateTokenFromApi');
 });
 

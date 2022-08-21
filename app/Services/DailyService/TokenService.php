@@ -2,11 +2,11 @@
 
 namespace App\Services\DailyService;
 
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 use Nowakowskir\JWT\TokenDecoded;
 use Nowakowskir\JWT\JWT;
-use Nowakowskir\JWT\TokenEncoded;
 
 class TokenService
 {
@@ -40,16 +40,27 @@ class TokenService
         return response()->json($result->json(),$result->status());
     }
 
-
-    public function generateSelfSignedToken(array $data)
+    /**
+     * @param array $data
+     * @return JsonResponse
+     */
+    public function generateSelfSignedToken(array $data): JsonResponse
     {
         $payload = [
-            'r' => 'payload_key',
-            'iat' => 'payload_key',
-            'd' => 'payload_key',
+            'r' => $data['room_name'],
+            'iat' => Carbon::now()->timestamp,
+            'exp' => Carbon::now()->addSeconds(50)->timestamp,
+            'd' => config('services.daily.domain_id'),
+            'u' => $data['user_name'],
+            'o' => $data['is_owner'] ?? false,
         ] ;
-        $tokenDecoded = new TokenDecoded(['payload_key' => 'value'], ['header_key' => 'value']);
-        $tokenEncoded = $tokenDecoded->encode(config('services.daily.key'), JWT::ALGORITHM_RS256);
+        $tokenDecoded = new TokenDecoded($payload);
+
+        return response()->json(
+            [
+                'token' => $tokenDecoded->encode(config('services.daily.key'), JWT::ALGORITHM_HS256)->toString()
+            ]
+        );
     }
 
     /**

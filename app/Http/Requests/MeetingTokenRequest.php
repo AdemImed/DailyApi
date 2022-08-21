@@ -23,6 +23,14 @@ class MeetingTokenRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->routeIs('generateSelfSignedToken'))
+        {
+            return [
+                'room_name' => 'required|string',
+                'user_name' => 'required|string',
+                'is_owner' => 'nullable|boolean',
+            ];
+        }
         return [
             'properties.room_name' => 'required|string',
             'properties.exp' => 'nullable|integer',
