@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('login', [\App\Http\Controllers\Api\V1\Auth\AuthController::class, 'login'])->name('login');
+
+Route::controller(\App\Http\Controllers\Api\V1\Room\RoomController::class)->group(function (){
+    Route::get('rooms','getRooms');
+    Route::post('tokens','createToken');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
