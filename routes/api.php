@@ -30,9 +30,9 @@ Route::controller(\App\Http\Controllers\Api\V1\MeetingToken\MeetingTokenControll
     Route::get('meeting-tokens/{meeting_token}','validateTokenFromApi');
 });
 
-Route::controller(\App\Http\Controllers\Api\V1\Domain\DomainController::class)->group(function (){
-    Route::get('domains','index');
-});
+Route::get('domains', \App\Http\Controllers\Api\V1\Domain\DomainController::class);
+Route::get('meetings', \App\Http\Controllers\Api\V1\Meeting\MeetingController::class);
+Route::get('presence', \App\Http\Controllers\Api\V1\Presence\PresenceController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

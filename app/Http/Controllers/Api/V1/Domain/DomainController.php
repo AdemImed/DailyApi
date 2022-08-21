@@ -17,7 +17,7 @@ class DomainController extends Controller
         $this->daily = new TokenService();
     }
 
-    public function index()
+    public function __invoke()
     {
         return $this->daily->getDomainInformation();
     }
