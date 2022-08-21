@@ -26,7 +26,7 @@ class MeetingService
             'Authorization' => $this->authorization,
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
-        ])->get(config('services.daily.api_base_url').'meetings');
+        ])->get(config('services.daily.api_base_url').'meetings?'.request()->getQueryString());
 
         if ($result->status() === 200)
         {
