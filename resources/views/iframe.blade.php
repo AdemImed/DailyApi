@@ -15,8 +15,8 @@
             iframeStyle: {
                 position: 'fixed',
                 border: '1px solid black',
-                width: '375px',
-                height: '450px',
+                width: '1500px',
+                height: '1000px',
                 right: '1em',
                 bottom: '1em',
             },
@@ -27,10 +27,11 @@
             showFullscreenButton: true,
         });
         callFrame.join({
-            url: 'https://test-arslane.daily.co/uscwFxA58dL0hxQ0oke8',
-            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyIjoidXNjd0Z4QTU4ZEwwaHhRMG9rZTgiLCJ1IjoiQXJzbGFuIiwibyI6ZmFsc2UsImN0b2UiOnRydWUsInZvIjp0cnVlLCJkIjoiMGM4YWVmZWYtN2Q4ZC00YjIyLThhYWItNmY2ZGNiZTI2YmZmIiwiaWF0IjoxNjYwOTkxMjQxfQ._f6iFk6VqyRYp0IRliWrgXeU5VTNoM8HmoQWjWr0wlY'
+            url: 'https://test-arslane.daily.co/Room-Api-test',
+            token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyIjoiUm9vbS1BcGktdGVzdCIsImlhdCI6MTY2MTA4ODQ5MywiZXhwIjoxNjYxMDg4NTQzLCJkIjoiMGM4YWVmZWYtN2Q4ZC00YjIyLThhYWItNmY2ZGNiZTI2YmZmIiwidSI6IlRlc3QiLCJvIjpmYWxzZX0.BNKuycaHJv8up7mHE0NxmfFd5wposxfSkcVY-L1We-c'
         });
     }
+    createFrameAndJoinRoom();
 </script>
 
 </body>
